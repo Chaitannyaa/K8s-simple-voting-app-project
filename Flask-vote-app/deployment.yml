@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-vote-app
+  labels:
+    app: flask-vote-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask-vote-app
+  template:
+    metadata:
+      labels:
+        app: flask-vote-app
+    spec:
+      containers:
+        - name: flask-vote-app
+          image: chaitannyaa/flask-vote-app:latest
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: db-user
+            - name: DB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: db-root-password
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: flask-vote-configmap
+                  key: db-database
+            - name: DB_HOST
+              value: mysql-container
+          ports:
+            - containerPort: 5000
