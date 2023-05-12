@@ -21,7 +21,16 @@ spec:
     spec:
       containers:
         - name: flask-vote-app
-          image: chaitannyaa/flask-vote-app:latest
+          image: chaitannyaa/flask-vote-app:k8s
           ports:
             - containerPort: 5000
               name: flask-vote-app
+          env:
+            - name: MYSQL_HOST
+              value: mysql-container
+            - name: MYSQL_USER
+              value: root
+            - name: MYSQL_PASSWORD
+              value: password
+            - name: MYSQL_DATABASE
+              value: votes
