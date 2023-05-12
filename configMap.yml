@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: common-configmap
+  name: mysql-configmap
   namespace: flask-vote-app
 data:
   database: votes
