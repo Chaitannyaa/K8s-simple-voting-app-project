@@ -5,10 +5,10 @@ metadata:
   namespace: flask-vote-app
   labels:
     name: flask-vote-app-service
-    app: mysql-app
+    app: mysql-container
 spec:
   selector:
-      name: mysql-app
+      name: mysql-container
       app: flask-vote-app
   ports:
     - port: 3306
