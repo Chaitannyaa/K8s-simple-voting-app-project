@@ -6,11 +6,9 @@ metadata:
   labels:
     app: flask-vote-app
 spec:
-  type: NodePort
   selector:
     app: flask-vote-app
   ports:
     - name: http
       port: 5000
       targetPort: 5000
-      nodePort: 30001
