@@ -8,7 +8,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    name: flask-vote-deployment
+    name: flask-vote-app-deploy
     app: flask-vote-app
   ports:
   - port: 80
