@@ -10,13 +10,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      name: mysql-app
+      name: mysql-container
       app: flask-vote-app
   template:
     metadata:
-      name: mysql-app
+      name: mysql-container
       labels:
-        name: mysql-app
+        name: mysql-container
         app: flask-vote-app
     spec:
       containers:
