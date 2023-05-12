@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-vote-deployment
+  labels:
+    name: flask-vote-deployment
+    app: flask-vote-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: flask-vote-deployment
+      app: flask-vote-app
+  template:
+    metadata:
+      name: flask-vote-app
+      labels:
+        name: flask-vote-deployment
+        app: flask-vote-app
+    spec:
+      containers:
+        - name: flask-vote-app
+          image: chaitannyaa/flask-vote-app:latest
+          ports:
+            - containerPort: 5000
